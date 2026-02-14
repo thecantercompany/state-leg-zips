@@ -11,9 +11,19 @@ export default function StatePill({
   abbreviation,
   onClick,
 }: StatePillProps) {
+  const handleClick = () => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "state_click", {
+        state_name: name,
+        state_abbreviation: abbreviation,
+      });
+    }
+    onClick();
+  };
+
   return (
     <button
-      onClick={onClick}
+      onClick={handleClick}
       className="group flex flex-col items-center gap-1 px-3 py-2.5 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-300 hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 cursor-pointer"
     >
       <img

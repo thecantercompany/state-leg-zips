@@ -17,12 +17,22 @@ export default function DistrictPill({
 }: DistrictPillProps) {
   const [justCopied, setJustCopied] = useState(false);
 
+  const trackCopy = () => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "zip_copy", {
+        district_name: name,
+        zip_count: zips.length,
+      });
+    }
+  };
+
   const handleClick = async () => {
     const csv = zips.join(",");
     try {
       await navigator.clipboard.writeText(csv);
       setJustCopied(true);
       onCopied(`Copied! (${zips.length} ZIPs from ${name})`);
+      trackCopy();
       setTimeout(() => setJustCopied(false), 1500);
     } catch {
       // Fallback for older browsers
@@ -36,6 +46,7 @@ export default function DistrictPill({
       document.body.removeChild(textarea);
       setJustCopied(true);
       onCopied(`Copied! (${zips.length} ZIPs from ${name})`);
+      trackCopy();
       setTimeout(() => setJustCopied(false), 1500);
     }
   };
