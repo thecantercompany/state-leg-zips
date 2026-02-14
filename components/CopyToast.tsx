@@ -24,7 +24,7 @@ export default function CopyToast({
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in">
-      <div className="bg-green-600 text-white px-5 py-2.5 rounded-full shadow-lg text-sm font-medium">
+      <div className="bg-emerald-600 text-white px-6 py-3 rounded-full shadow-xl text-sm font-medium">
         {message}
       </div>
     </div>

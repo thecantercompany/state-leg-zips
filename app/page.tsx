@@ -43,7 +43,7 @@ export default function Home() {
   if (loading) {
     return (
       <div className="h-screen flex items-center justify-center">
-        <div className="text-blue-400 text-lg">Loading district data...</div>
+        <div className="text-slate-400 text-lg animate-pulse">Loading district data...</div>
       </div>
     );
   }
@@ -63,12 +63,12 @@ export default function Home() {
     : null;
 
   return (
-    <div className="h-screen flex flex-col px-4 py-8 max-w-6xl mx-auto overflow-hidden">
-      <header className="text-center mb-10 shrink-0">
-        <h1 className="text-3xl font-bold text-blue-900 mb-2">
+    <div className="h-screen flex flex-col px-4 py-10 max-w-6xl mx-auto overflow-hidden">
+      <header className="text-center mb-12 shrink-0">
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 mb-2">
           State Leg ZIPs
         </h1>
-        <p className="text-blue-500 text-sm max-w-lg mx-auto">
+        <p className="text-slate-500 text-sm max-w-lg mx-auto leading-relaxed">
           Copy ZIP codes by state legislative district. Click a state, then
           click a district to copy its ZIPs to your clipboard.
         </p>

@@ -6,7 +6,7 @@ export default function Methodology() {
       <div className="shrink-0 mb-8">
         <Link
           href="/"
-          className="text-blue-500 hover:text-blue-700 text-sm font-medium flex items-center gap-1"
+          className="text-slate-500 hover:text-blue-600 text-sm font-medium flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-all duration-200"
         >
           <svg
             className="w-4 h-4"
@@ -26,11 +26,11 @@ export default function Methodology() {
       </div>
 
       <main className="flex-1 min-h-0 overflow-auto">
-        <h1 className="text-3xl font-bold text-blue-900 mb-6">Methodology</h1>
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 mb-6">Methodology</h1>
 
-        <div className="space-y-6 text-blue-800 text-sm leading-relaxed">
+        <div className="space-y-6 text-slate-700 text-sm leading-relaxed">
           <section>
-            <h2 className="text-lg font-semibold text-blue-900 mb-2">
+            <h2 className="text-base font-semibold text-slate-800 mb-2">
               Where the ZIP codes come from
             </h2>
             <p>
@@ -39,7 +39,7 @@ export default function Methodology() {
                 href="https://www.census.gov/geographies/mapping-files/2024/dec/rdo/116-congressional-and-2024-state-legislative-district-background.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 underline hover:text-blue-700"
+                className="text-blue-600 underline hover:text-blue-800"
               >
                 U.S. Census Bureau&apos;s relationship files
               </a>
@@ -49,7 +49,7 @@ export default function Methodology() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-blue-900 mb-2">
+            <h2 className="text-base font-semibold text-slate-800 mb-2">
               What is a ZCTA?
             </h2>
             <p>
@@ -62,7 +62,7 @@ export default function Methodology() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-blue-900 mb-2">
+            <h2 className="text-base font-semibold text-slate-800 mb-2">
               How districts are matched to ZIP codes
             </h2>
             <p>
@@ -81,7 +81,7 @@ export default function Methodology() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-blue-900 mb-2">
+            <h2 className="text-base font-semibold text-slate-800 mb-2">
               Data vintage
             </h2>
             <p>
@@ -93,7 +93,7 @@ export default function Methodology() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-blue-900 mb-2">
+            <h2 className="text-base font-semibold text-slate-800 mb-2">
               Limitations
             </h2>
             <ul className="list-disc list-inside space-y-1">
@@ -116,20 +116,20 @@ export default function Methodology() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-blue-900 mb-2">
+            <h2 className="text-base font-semibold text-slate-800 mb-2">
               Source files
             </h2>
             <p>The raw Census Bureau relationship files used:</p>
             <ul className="list-disc list-inside space-y-1 mt-2">
               <li>
                 <strong>House districts:</strong>{" "}
-                <code className="text-xs bg-blue-100 px-1 py-0.5 rounded">
+                <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">
                   tab20_sldl202420_zcta520_natl.txt
                 </code>
               </li>
               <li>
                 <strong>Senate districts:</strong>{" "}
-                <code className="text-xs bg-blue-100 px-1 py-0.5 rounded">
+                <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">
                   tab20_sldu202420_zcta520_natl.txt
                 </code>
               </li>
@@ -140,7 +140,7 @@ export default function Methodology() {
                 href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/cd-sld/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 underline hover:text-blue-700"
+                className="text-blue-600 underline hover:text-blue-800"
               >
                 Census Bureau&apos;s geographic relationship files page
               </a>
@@ -150,9 +150,9 @@ export default function Methodology() {
         </div>
       </main>
 
-      <footer className="shrink-0 pt-4 pb-4 text-center">
-        <p className="text-xs text-blue-400">
-          <Link href="/" className="hover:text-blue-600 underline">
+      <footer className="shrink-0 pt-4 pb-4 text-center border-t border-slate-200">
+        <p className="text-xs text-slate-400">
+          <Link href="/" className="hover:text-slate-600 hover:underline transition-colors duration-200">
             State Leg ZIPs
           </Link>
         </p>

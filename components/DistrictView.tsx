@@ -68,7 +68,7 @@ export default function DistrictView({
       <div className="flex items-center justify-between mb-6">
         <button
           onClick={onBack}
-          className="text-blue-500 hover:text-blue-700 text-sm font-medium flex items-center gap-1 cursor-pointer"
+          className="text-slate-500 hover:text-blue-600 text-sm font-medium flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-all duration-200 cursor-pointer"
         >
           <svg
             className="w-4 h-4"
@@ -85,17 +85,17 @@ export default function DistrictView({
           </svg>
           All States
         </button>
-        <div className="flex items-center gap-3 text-xs text-blue-400">
+        <div className="flex items-center gap-3 text-xs text-slate-400">
           {formattedDate && <span>Updated {formattedDate}</span>}
           <button
             onClick={handleRequestUpdate}
             disabled={updateStatus === "sending" || updateStatus === "sent"}
             className={`cursor-pointer ${
               updateStatus === "sent"
-                ? "text-green-500"
+                ? "text-emerald-500"
                 : updateStatus === "error"
                   ? "text-red-500 underline"
-                  : "underline hover:text-blue-600"
+                  : "hover:underline hover:text-blue-600"
             } ${updateStatus === "sending" ? "opacity-50" : ""}`}
           >
             {updateStatus === "sending"
@@ -109,14 +109,14 @@ export default function DistrictView({
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-blue-900 mb-1">{state.name}</h2>
-      <p className="text-sm text-blue-400 mb-8">
+      <h2 className="text-2xl font-bold text-slate-900 mb-1">{state.name}</h2>
+      <p className="text-sm text-slate-400 mb-8">
         Click a district to copy its ZIP codes
       </p>
 
       {isNebraska ? (
         <div>
-          <h3 className="text-lg font-semibold text-blue-800 mb-4">
+          <h3 className="text-base font-semibold text-slate-800 mb-4 pb-2 border-b border-slate-200">
             Legislature
           </h3>
           <div className="flex flex-wrap gap-2">
@@ -135,9 +135,9 @@ export default function DistrictView({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {lower && sortedLowerDistricts.length > 0 && (
             <div>
-              <h3 className="text-lg font-semibold text-blue-800 mb-4">
+              <h3 className="text-base font-semibold text-slate-800 mb-4 pb-2 border-b border-slate-200">
                 House Districts
-                <span className="text-sm font-normal text-blue-400 ml-2">
+                <span className="text-sm font-normal text-slate-400 ml-2">
                   ({sortedLowerDistricts.length})
                 </span>
               </h3>
@@ -156,9 +156,9 @@ export default function DistrictView({
           )}
           {upper && sortedUpperDistricts.length > 0 && (
             <div>
-              <h3 className="text-lg font-semibold text-blue-800 mb-4">
+              <h3 className="text-base font-semibold text-slate-800 mb-4 pb-2 border-b border-slate-200">
                 Senate Districts
-                <span className="text-sm font-normal text-blue-400 ml-2">
+                <span className="text-sm font-normal text-slate-400 ml-2">
                   ({sortedUpperDistricts.length})
                 </span>
               </h3>
