@@ -46,10 +46,11 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Failed to send update request email:", error);
+  } catch (error: unknown) {
+    const sgError = error as { response?: { body?: unknown }; message?: string };
+    console.error("Failed to send update request email:", JSON.stringify(sgError.response?.body ?? sgError.message ?? error));
     return NextResponse.json(
-      { error: "Failed to send request" },
+      { error: "Failed to send request", detail: sgError.response?.body ?? sgError.message ?? "Unknown error" },
       { status: 500 }
     );
   }
