@@ -1,0 +1,58 @@
+import { NextResponse } from "next/server";
+import sgMail from "@sendgrid/mail";
+
+export async function POST(request: Request) {
+  try {
+    const { state, stateCode, email, note } = await request.json();
+
+    if (!state || !stateCode) {
+      return NextResponse.json(
+        { error: "State is required" },
+        { status: 400 }
+      );
+    }
+
+    const apiKey = process.env.SENDGRID_API_KEY;
+    const fromEmail = process.env.SENDGRID_FROM_EMAIL;
+    const toEmail = process.env.UPDATE_REQUEST_EMAIL;
+
+    if (!apiKey || !fromEmail || !toEmail) {
+      console.error("Missing email configuration environment variables");
+      return NextResponse.json(
+        { error: "Email service not configured" },
+        { status: 500 }
+      );
+    }
+
+    sgMail.setApiKey(apiKey);
+
+    const timestamp = new Date().toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles",
+      dateStyle: "full",
+      timeStyle: "short",
+    });
+
+    await sgMail.send({
+      to: toEmail,
+      from: fromEmail,
+      subject: `State Leg ZIPs: Update requested for ${state} (${stateCode})`,
+      html: `
+        <h2>Data Update Request</h2>
+        <p><strong>State:</strong> ${state} (${stateCode})</p>
+        ${email ? `<p><strong>Requester Email:</strong> ${email}</p>` : ""}
+        ${note ? `<p><strong>Note:</strong> ${note}</p>` : ""}
+        <p><strong>Requested at:</strong> ${timestamp}</p>
+        <hr>
+        <p style="color: #999; font-size: 12px;">Sent from statelegzips.com</p>
+      `,
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Failed to send update request email:", error);
+    return NextResponse.json(
+      { error: "Failed to send request" },
+      { status: 500 }
+    );
+  }
+}
