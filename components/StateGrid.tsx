@@ -44,12 +44,21 @@ export default function StateGrid({
       // Clamp pill height to reasonable bounds
       const clampedHeight = Math.max(50, Math.min(120, pillHeight));
 
+      // Scale font and icon based on pill height
+      // At 50px height → 10px font, 16px icon; at 120px → 16px font, 28px icon
+      const t = (clampedHeight - 50) / 70; // 0 to 1
+      const fontSize = Math.round(10 + t * 6);
+      const iconSize = Math.round(16 + t * 12);
+
       setGridStyle({
         display: "grid",
         gridTemplateColumns: `repeat(${cols}, 1fr)`,
         gap: `${gap}px`,
         gridAutoRows: `${clampedHeight}px`,
-      });
+        // Pass sizing info via CSS custom properties
+        "--pill-font-size": `${fontSize}px`,
+        "--pill-icon-size": `${iconSize}px`,
+      } as React.CSSProperties);
     };
 
     calculate();
