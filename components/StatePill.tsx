@@ -3,24 +3,14 @@
 interface StatePillProps {
   name: string;
   abbreviation: string;
-  lastUpdated: string | undefined;
   onClick: () => void;
 }
 
 export default function StatePill({
   name,
   abbreviation,
-  lastUpdated,
   onClick,
 }: StatePillProps) {
-  const formattedDate = lastUpdated
-    ? new Date(lastUpdated + "T00:00:00").toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      })
-    : null;
-
   return (
     <button
       onClick={onClick}
@@ -32,11 +22,6 @@ export default function StatePill({
       <span className="text-xs text-blue-400 group-hover:text-blue-600">
         {name}
       </span>
-      {formattedDate && (
-        <span className="text-[10px] text-blue-300">
-          Updated {formattedDate}
-        </span>
-      )}
     </button>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { StateData, StateUpdates } from "@/lib/types";
 import DistrictPill from "./DistrictPill";
 
@@ -9,7 +10,6 @@ interface DistrictViewProps {
   stateUpdates: StateUpdates;
   onBack: () => void;
   onCopied: (message: string) => void;
-  onRequestUpdate: () => void;
 }
 
 export default function DistrictView({
@@ -17,8 +17,27 @@ export default function DistrictView({
   stateUpdates,
   onBack,
   onCopied,
-  onRequestUpdate,
 }: DistrictViewProps) {
+  const [updateStatus, setUpdateStatus] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
+
+  const handleRequestUpdate = async () => {
+    setUpdateStatus("sending");
+    try {
+      const res = await fetch("/api/request-update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          state: state.name,
+          stateCode: state.abbreviation,
+        }),
+      });
+      setUpdateStatus(res.ok ? "sent" : "error");
+    } catch {
+      setUpdateStatus("error");
+    }
+  };
   const isNebraska = state.abbreviation === "NE";
   const upper = state.chambers.upper;
   const lower = state.chambers.lower;
@@ -69,10 +88,23 @@ export default function DistrictView({
         <div className="flex items-center gap-3 text-xs text-blue-400">
           {formattedDate && <span>Updated {formattedDate}</span>}
           <button
-            onClick={onRequestUpdate}
-            className="underline hover:text-blue-600 cursor-pointer"
+            onClick={handleRequestUpdate}
+            disabled={updateStatus === "sending" || updateStatus === "sent"}
+            className={`cursor-pointer ${
+              updateStatus === "sent"
+                ? "text-green-500"
+                : updateStatus === "error"
+                  ? "text-red-500 underline"
+                  : "underline hover:text-blue-600"
+            } ${updateStatus === "sending" ? "opacity-50" : ""}`}
           >
-            Request Update
+            {updateStatus === "sending"
+              ? "Sending..."
+              : updateStatus === "sent"
+                ? "✓ Requested"
+                : updateStatus === "error"
+                  ? "Failed — retry?"
+                  : "Request Update"}
           </button>
         </div>
       </div>

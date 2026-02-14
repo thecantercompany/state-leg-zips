@@ -1,17 +1,15 @@
 "use client";
 
-import { StateData, StateUpdates } from "@/lib/types";
+import { StateData } from "@/lib/types";
 import StatePill from "./StatePill";
 
 interface StateGridProps {
   states: Record<string, StateData>;
-  stateUpdates: StateUpdates;
   onSelectState: (fips: string) => void;
 }
 
 export default function StateGrid({
   states,
-  stateUpdates,
   onSelectState,
 }: StateGridProps) {
   const sortedStates = Object.entries(states).sort(([, a], [, b]) =>
@@ -25,7 +23,6 @@ export default function StateGrid({
           key={fips}
           name={state.name}
           abbreviation={state.abbreviation}
-          lastUpdated={stateUpdates[state.abbreviation]}
           onClick={() => onSelectState(fips)}
         />
       ))}

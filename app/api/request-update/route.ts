@@ -3,7 +3,7 @@ import sgMail from "@sendgrid/mail";
 
 export async function POST(request: Request) {
   try {
-    const { state, stateCode, email, note } = await request.json();
+    const { state, stateCode } = await request.json();
 
     if (!state || !stateCode) {
       return NextResponse.json(
@@ -39,8 +39,6 @@ export async function POST(request: Request) {
       html: `
         <h2>Data Update Request</h2>
         <p><strong>State:</strong> ${state} (${stateCode})</p>
-        ${email ? `<p><strong>Requester Email:</strong> ${email}</p>` : ""}
-        ${note ? `<p><strong>Note:</strong> ${note}</p>` : ""}
         <p><strong>Requested at:</strong> ${timestamp}</p>
         <hr>
         <p style="color: #999; font-size: 12px;">Sent from statelegzips.com</p>
