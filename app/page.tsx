@@ -63,8 +63,8 @@ export default function Home() {
     : null;
 
   return (
-    <div className="h-screen flex flex-col px-4 py-10 max-w-6xl mx-auto overflow-hidden">
-      <header className="text-center mb-12 shrink-0">
+    <div className="h-screen flex flex-col px-4 py-6 max-w-7xl mx-auto overflow-hidden">
+      <header className="text-center mb-6 shrink-0">
         <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 mb-2">
           State Leg ZIPs
         </h1>
