@@ -13,12 +13,34 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://statelegzips.com";
+const title = "State Leg ZIPs - Copy ZIP Codes by Legislative District";
+const description =
+  "Instantly copy ZIP codes for any state legislative district. Built for ad targeting on platforms like StackAdapt, Meta, and Google Ads.";
+
 export const metadata: Metadata = {
-  title: "State Leg ZIPs - Copy ZIP Codes by Legislative District",
-  description:
-    "Instantly copy ZIP codes for any state legislative district. Built for ad targeting on platforms like StackAdapt, Meta, and Google Ads.",
-  icons: {
-    icon: "/favicon.svg",
+  title,
+  description,
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    title,
+    description,
+    url: siteUrl,
+    siteName: "State Leg ZIPs",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: siteUrl,
   },
 };
 

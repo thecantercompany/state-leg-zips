@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Methodology - State Leg ZIPs",
+  description:
+    "How State Leg ZIPs maps ZIP codes to state legislative districts using U.S. Census Bureau relationship files.",
+  alternates: {
+    canonical: "/methodology",
+  },
+};
 
 export default function Methodology() {
   return (
