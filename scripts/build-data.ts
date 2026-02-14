@@ -95,7 +95,7 @@ function parseFile(
     const stateFips = geoid.substring(0, 2);
     const districtNum = geoid.substring(2).replace(/^0+/, "") || "0";
 
-    // Skip territories we don't include (only keep 50 states + DC)
+    // Skip territories and DC (only keep 50 states)
     if (!STATE_FIPS[stateFips]) continue;
 
     // Skip "ZZ" districts (unassigned/at-large placeholders with all Z's)

@@ -55,7 +55,7 @@ export default function DistrictPill({
     <button
       onClick={handleClick}
       title={`${name} — ${zips.length} ZIPs (click to copy)`}
-      className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer ${
+      className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer min-w-[2.5rem] text-center ${
         justCopied
           ? "bg-emerald-500 text-white scale-95 shadow-md ring-2 ring-emerald-300"
           : "bg-white border border-slate-200 text-slate-700 shadow-sm hover:shadow-md hover:border-blue-400 hover:text-blue-700 hover:-translate-y-px active:translate-y-0 active:shadow-none"

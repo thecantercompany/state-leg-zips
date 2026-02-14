@@ -7,7 +7,6 @@ export const STATE_FIPS: Record<string, { name: string; abbreviation: string }> 
   "08": { name: "Colorado", abbreviation: "CO" },
   "09": { name: "Connecticut", abbreviation: "CT" },
   "10": { name: "Delaware", abbreviation: "DE" },
-  "11": { name: "District of Columbia", abbreviation: "DC" },
   "12": { name: "Florida", abbreviation: "FL" },
   "13": { name: "Georgia", abbreviation: "GA" },
   "15": { name: "Hawaii", abbreviation: "HI" },

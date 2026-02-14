@@ -84,10 +84,12 @@ export default function Home() {
             onCopied={handleCopied}
           />
         ) : (
-          <StateGrid
-            states={data.states}
-            onSelectState={setSelectedState}
-          />
+          <div className="h-full">
+            <StateGrid
+              states={data.states}
+              onSelectState={setSelectedState}
+            />
+          </div>
         )}
       </main>
 
