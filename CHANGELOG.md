@@ -2,6 +2,11 @@
 
 All notable changes to State Leg ZIPs will be documented in this file.
 
+## [2026-02-15]
+
+### Added
+- Error reporting to centralized Error Reporter API for daily error reports
+
 ## [2026-02-14]
 
 ### Added

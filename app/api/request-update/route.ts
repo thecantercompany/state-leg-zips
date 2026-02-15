@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import sgMail from "@sendgrid/mail";
+import { reportError } from "@/lib/error-reporter";
 
 export async function POST(request: Request) {
   try {
@@ -49,6 +50,13 @@ export async function POST(request: Request) {
   } catch (error: unknown) {
     const sgError = error as { response?: { body?: unknown }; message?: string };
     console.error("Failed to send update request email:", JSON.stringify(sgError.response?.body ?? sgError.message ?? error));
+
+    reportError({
+      category: "email_error",
+      message: sgError.message ?? "Failed to send update request email",
+      rawError: error,
+    });
+
     return NextResponse.json(
       { error: "Failed to send request", detail: sgError.response?.body ?? sgError.message ?? "Unknown error" },
       { status: 500 }
