@@ -35,3 +35,6 @@ next-env.d.ts
 
 # raw Census data files (large, not needed in repo)
 data/raw/
+
+# superdesign — exploration variants are ephemeral; design_system/ is committed
+superdesign/design_iterations/
