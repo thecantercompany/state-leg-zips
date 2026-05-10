@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import sgMail from "@sendgrid/mail";
-import { reportError } from "@/lib/error-reporter";
+import { reportError } from "canter-error-reporter";
 
 export async function POST(request: Request) {
   try {
@@ -52,6 +52,7 @@ export async function POST(request: Request) {
     console.error("Failed to send update request email:", JSON.stringify(sgError.response?.body ?? sgError.message ?? error));
 
     reportError({
+      project: "state-leg-zips",
       category: "email_error",
       message: sgError.message ?? "Failed to send update request email",
       rawError: error,
